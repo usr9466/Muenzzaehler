@@ -21,7 +21,7 @@ int main(void)
 	int absolutesGewicht; // Absolutes Gewicht auf der Waage in mg
 	int leerGewicht;			// Leergewicht in mg
 	int deltaGewicht;			// Absolutes Gewicht - Leergewicht auf der Waage in mg
-	int münzAnzahl;				// Absolute Münzanzahl
+	int muenzAnzahl;			// Absolute muenzAnzahl
 
 	// Initialisierung der Peripherie
 	initPins();
@@ -90,15 +90,15 @@ loop:
 		ausgabeString(intToString(deltaGewicht, 3));
 		ausgabeString(" g\n");
 
-		münzAnzahl = weightTomünzAnzahl(deltaGewicht, CURRENT_COIN_WEIGHT);
+		muenzAnzahl = weightTomuenzAnzahl(deltaGewicht, CURRENT_COIN_WEIGHT);
 
-		münzAnzahl &= 0xff;
+		muenzAnzahl &= 0xff;
 
 		int i;
 		for (i = 0; i < 8; i++)
 		{
 			// Aktuelles Bit true/false
-			bool bit = (münzAnzahl >> (7 - i)) & 1;
+			bool bit = (muenzAnzahl >> (7 - i)) & 1;
 
 			// Aktuelle LED (Offset von LED1 um i) auf Bit gesetzt
 			setLED(LED1 << i, bit);
@@ -118,7 +118,7 @@ loop:
 	ausgabeString(" g\n");
 
 	ausgabeString("Anzahl der Muenzen: ");
-	ausgabeString(intToString(münzAnzahl, 0));
+	ausgabeString(intToString(muenzAnzahl, 0));
 	ausgabeString("\n");
 
 	goto loop;
