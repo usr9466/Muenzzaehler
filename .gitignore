@@ -1,0 +1,6 @@
+*.o
+*.elf
+*.s
+SNDB4
+*.proj
+*.run
